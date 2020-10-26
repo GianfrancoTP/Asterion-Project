@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -32,12 +33,44 @@ public class MinotaurAgro : MonoBehaviour
         if (distanceToPlayer < aggroRange)
         {
             //code to chase player
-
+            chasePlayer();
         }
         else
-        { 
+        {
             //stop chasing player
+            stopChasingPlayer();
         }
 
+    }
+
+    private void chasePlayer()
+    {
+        if (transform.position.x < player.position.x && transform.position.y < player.position.y)
+        {
+            //minotauro a la izquierda del jugador y abajo
+            rb2d.velocity = new Vector2(moveSpeed, moveSpeed);
+        }
+
+        else if (transform.position.x < player.position.x && transform.position.y > player.position.y)
+        {
+            //minotauro a la izquierda y arriba de el
+            rb2d.velocity = new Vector2(moveSpeed, -moveSpeed);
+        }
+
+        else if (transform.position.x > player.position.x && transform.position.y < player.position.y) 
+        {
+            //minotaur a la derecha y abajo del jugador
+            rb2d.velocity = new Vector2(-moveSpeed, moveSpeed);
+        }
+        else if (transform.position.x > player.position.x && transform.position.y > player.position.y)
+        {
+            //minotauro a la derecha del jugador y arriba de el
+            rb2d.velocity = new Vector2(-moveSpeed, -moveSpeed);
+        }
+    }
+
+    private void stopChasingPlayer() 
+    {
+        rb2d.velocity = new Vector2(0, 0);
     }
 }

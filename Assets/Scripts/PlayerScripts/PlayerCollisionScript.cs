@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace PlayerScripts
@@ -6,31 +7,31 @@ namespace PlayerScripts
     public class PlayerCollisionScript : MonoBehaviour
     {
         [SerializeField] private PlayerMainScript mainScript;
-        
+
+        private void Start()
+        {
+           Debug.Log("WGERTBVERHBRNBTRNer");
+        }
+
         void OnCollisionEnter2D(Collision2D collisionInfo)
         {
-            if (collisionInfo.collider.tag == "enemy")
+            if (collisionInfo.collider.tag == "Ghost")
             {
-                //FindObjectOfType<GameManager>().LoseGame();
+                Debug.Log("Ghost");
             }
             
             else if (collisionInfo.collider.tag == "door")
             {
                 //FindObjectOfType<GameManager>().WinGame();
             }
-            
-            else if (collisionInfo.collider.tag == "Rune")
-            {
-                FoundRune();
-                Debug.Log("RUUUUUUUUUUUUUUNE");
-            }
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Rune"))
+            if (other.gameObject.tag == "Rune")
             {
-                Debug.Log("Win");
+                FoundRune();
+                Debug.Log("Rune");
             }
         }
 

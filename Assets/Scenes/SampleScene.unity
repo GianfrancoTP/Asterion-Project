@@ -7710,6 +7710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd02f73fa014596a810706009f28df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  mainScript: {fileID: 0}
+  levelText: {fileID: 1095353196}
 --- !u!114 &877346317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7926,7 +7929,7 @@ MonoBehaviour:
   startTimerBtwAttack: 0.5
   attackPos: {fileID: 2123934719}
   attackRange: 0.64
-  attackDamage: 1
+  attackDamage: 10
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
@@ -8676,7 +8679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.07756319, b: 0.07756319, a: 1}
+  m_Color: {r: 0.14150941, g: 0.18431373, b: 0.11280703, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8684,10 +8687,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0

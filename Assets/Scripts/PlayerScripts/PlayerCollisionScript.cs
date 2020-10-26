@@ -30,7 +30,8 @@ namespace PlayerScripts
         {
             if (other.gameObject.CompareTag("Rune"))
             {
-                Debug.Log("Win");
+                Debug.Log("Found Rune");
+                Destroy(other.gameObject);
             }
         }
 

@@ -14,6 +14,7 @@ namespace PlayerScripts
         public float attackDamage;
         public LayerMask whatIsEnemies;
         [SerializeField] private PlayerMainScript mainScript;
+        internal bool isKilled;
         
         void Update()
         {
@@ -38,7 +39,11 @@ namespace PlayerScripts
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(attackDamage);
+                    isKilled = enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(attackDamage);
+                    if (isKilled)
+                    {
+                        mainScript.stateScript.AddExperience(10);
+                    }
                 }
                 
         }

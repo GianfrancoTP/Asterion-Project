@@ -1,15 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlayerScripts
 {
     public class PlayerStateScript : MonoBehaviour
     {
         internal float experience=0;
-        internal int level=1;
+        public int level=1;
         internal List<string> runes;
+        
+        [SerializeField] private PlayerMainScript mainScript;
+        public Text levelText;
 
-
-
+        public void AddExperience(float experienceGain)
+        {
+            experience += experienceGain;
+            if (experience == 10)
+            {
+                level += 1;
+                Debug.Log("Level Up");
+                
+                levelText.text = level.ToString();
+            }
+        }
     }
 }

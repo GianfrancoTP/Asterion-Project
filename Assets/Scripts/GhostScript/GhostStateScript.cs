@@ -1,6 +1,7 @@
 ﻿﻿using System;
 using System.Net.Mail;
-using UnityEngine;
+ using UnityEditor;
+ using UnityEngine;
 
 namespace GhostScript
 {
@@ -45,7 +46,7 @@ namespace GhostScript
             }
         }
 
-        public void TakeDamage(float damage)
+        public bool TakeDamage(float damage)
         {
             life -= damage;
             Debug.Log("ghost took damage");
@@ -53,6 +54,11 @@ namespace GhostScript
             {
                 Debug.Log("Ghost Dead");
                 Destroy(gameObject);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         

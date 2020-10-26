@@ -13,10 +13,10 @@ namespace PlayerScripts
         [SerializeField] internal PlayerCollisionScript playerCollisionScript;
         [SerializeField] internal PlayerAttackScript playerAttackScript;
 
+
         private void Awake()
         {
-           
-            
+
         }
     }
 }

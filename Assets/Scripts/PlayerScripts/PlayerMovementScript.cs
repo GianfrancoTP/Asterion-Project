@@ -5,7 +5,7 @@ namespace PlayerScripts
     public class PlayerMovementScript : MonoBehaviour
     {
         [SerializeField] private PlayerMainScript mainScript;
-        internal float movementSpeed = 5;
+        public float movementSpeed = 5;
         private Vector3 change;
         private void FixedUpdate()
         {

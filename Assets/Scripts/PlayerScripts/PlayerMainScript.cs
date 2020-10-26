@@ -11,6 +11,7 @@ namespace PlayerScripts
         [SerializeField] internal PlayerMovementScript movementScript;
         [SerializeField] internal PlayerStateScript stateScript;
         [SerializeField] internal PlayerCollisionScript playerCollisionScript;
+        [SerializeField] internal PlayerAttackScript playerAttackScript;
 
         private void Awake()
         {

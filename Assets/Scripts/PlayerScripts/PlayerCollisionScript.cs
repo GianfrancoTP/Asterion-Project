@@ -47,5 +47,10 @@ namespace PlayerScripts
 
             newText.transform.SetParent(transform);
         }
+
+        float Attack(GameObject Ghost)
+        {
+            return (float) 5.0;
+        }
     }
 }

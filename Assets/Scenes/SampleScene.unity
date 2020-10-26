@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 302343760}
   - component: {fileID: 302343762}
   - component: {fileID: 302343761}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7475,7 +7475,7 @@ GameObject:
   - component: {fileID: 784983753}
   - component: {fileID: 784983757}
   - component: {fileID: 784983756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ghost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -7670,6 +7670,7 @@ GameObject:
   - component: {fileID: 877346318}
   - component: {fileID: 877346317}
   - component: {fileID: 877346316}
+  - component: {fileID: 877346324}
   - component: {fileID: 877346321}
   - component: {fileID: 877346322}
   - component: {fileID: 877346323}
@@ -7693,6 +7694,7 @@ Transform:
   m_Children:
   - {fileID: 1195933432}
   - {fileID: 858268687}
+  - {fileID: 2123934719}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7721,6 +7723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 877346318}
+  movementSpeed: 5
 --- !u!114 &877346318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7737,6 +7740,7 @@ MonoBehaviour:
   movementScript: {fileID: 877346317}
   stateScript: {fileID: 877346316}
   playerCollisionScript: {fileID: 877346320}
+  playerAttackScript: {fileID: 877346324}
 --- !u!114 &877346319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7900,13 +7904,33 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &877346324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877346314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd0257ecaa448e39732e48730d43215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimerBtwAttack: 0.5
+  attackPos: {fileID: 2123934719}
+  attackRange: 0.64
+  attackDamage: 1
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  mainScript: {fileID: 877346318}
 --- !u!1 &1086648258
 GameObject:
   m_ObjectHideFlags: 0
@@ -8793,7 +8817,7 @@ GameObject:
   - component: {fileID: 1837844151}
   - component: {fileID: 1837844153}
   - component: {fileID: 1837844152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New SpriteShapeController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8890,7 +8914,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -9048,7 +9072,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -9098,4 +9122,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2123934718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123934719}
+  m_Layer: 0
+  m_Name: attackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2123934719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123934718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 877346315}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

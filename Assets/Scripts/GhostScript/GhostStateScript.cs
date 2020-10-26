@@ -1,6 +1,7 @@
 ﻿﻿using System;
 using System.Net.Mail;
-using UnityEngine;
+ using UnityEditor;
+ using UnityEngine;
 
 namespace GhostScript
 {
@@ -11,12 +12,14 @@ namespace GhostScript
         internal Vector2 _startingPosition;
         private float _maxPosition;
         private float _minPosition;
+        internal float life;
 
         private void Start()
         {
             _startingPosition = transform.position;
             _maxPosition = transform.position.y + 5;
             _minPosition = transform.position.y - 5;
+            life = 15;
 
         }
 
@@ -42,5 +45,23 @@ namespace GhostScript
                 _hitWall = true;
             }
         }
+
+        public bool TakeDamage(float damage)
+        {
+            life -= damage;
+            Debug.Log("ghost took damage");
+            if (life <= 0)
+            {
+                Debug.Log("Ghost Dead");
+                Destroy(gameObject);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        
     }
 }

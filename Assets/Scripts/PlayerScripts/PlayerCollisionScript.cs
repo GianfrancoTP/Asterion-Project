@@ -30,8 +30,8 @@ namespace PlayerScripts
         {
             if (other.gameObject.tag == "Rune")
             {
-                FoundRune();
-                Debug.Log("Rune");
+                Debug.Log("Found Rune");
+                Destroy(other.gameObject);
             }
         }
 
@@ -47,6 +47,11 @@ namespace PlayerScripts
             newTextComp.fontSize = 10;
 
             newText.transform.SetParent(transform);
+        }
+
+        float Attack(GameObject Ghost)
+        {
+            return (float) 5.0;
         }
     }
 }

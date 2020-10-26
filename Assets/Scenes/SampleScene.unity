@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 302343760}
   - component: {fileID: 302343762}
   - component: {fileID: 302343761}
-  m_Layer: 1
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7780,9 +7780,9 @@ GameObject:
   - component: {fileID: 784983755}
   - component: {fileID: 784983754}
   - component: {fileID: 784983753}
-  - component: {fileID: 784983756}
   - component: {fileID: 784983757}
-  m_Layer: 0
+  - component: {fileID: 784983756}
+  m_Layer: 8
   m_Name: Ghost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -7844,7 +7844,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementScript: {fileID: 784983754}
   stateScript: {fileID: 784983753}
---- !u!61 &784983756
+--- !u!50 &784983756
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784983751}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
+--- !u!61 &784983757
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7977,6 +7998,7 @@ GameObject:
   - component: {fileID: 877346318}
   - component: {fileID: 877346317}
   - component: {fileID: 877346316}
+  - component: {fileID: 877346324}
   - component: {fileID: 877346321}
   - component: {fileID: 877346322}
   - component: {fileID: 877346323}
@@ -8001,6 +8023,7 @@ Transform:
   - {fileID: 919345660}
   - {fileID: 1195933432}
   - {fileID: 858268687}
+  - {fileID: 2123934719}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8016,6 +8039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd02f73fa014596a810706009f28df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
+  mainScript: {fileID: 0}
+  levelText: {fileID: 1095353196}
 --- !u!114 &877346317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8029,6 +8055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScript: {fileID: 877346318}
+  movementSpeed: 5
 --- !u!114 &877346318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8045,6 +8072,7 @@ MonoBehaviour:
   movementScript: {fileID: 877346317}
   stateScript: {fileID: 877346316}
   playerCollisionScript: {fileID: 877346320}
+  playerAttackScript: {fileID: 877346324}
 --- !u!114 &877346319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8202,7 +8230,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877346314}
-  m_BodyType: 0
+
+  m_BodyType: 1
+
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -8255,12 +8285,20 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919345659}
+  m_GameObject: {fileID: 877346314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019bc99e666ce544d86913e7dc1bdda9, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd0257ecaa448e39732e48730d43215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTimerBtwAttack: 0.5
+  attackPos: {fileID: 2123934719}
+  attackRange: 0.64
+  attackDamage: 10
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  mainScript: {fileID: 877346318}
 --- !u!1 &1086648258
 GameObject:
   m_ObjectHideFlags: 0
@@ -9006,7 +9044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.07756319, b: 0.07756319, a: 1}
+  m_Color: {r: 0.14150941, g: 0.18431373, b: 0.11280703, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9014,10 +9052,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -9259,7 +9297,7 @@ GameObject:
   - component: {fileID: 1837844151}
   - component: {fileID: 1837844153}
   - component: {fileID: 1837844152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New SpriteShapeController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9660,4 +9698,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2123934718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123934719}
+  m_Layer: 0
+  m_Name: attackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2123934719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123934718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 877346315}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

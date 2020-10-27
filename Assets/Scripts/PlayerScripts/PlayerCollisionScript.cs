@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace PlayerScripts
 {
@@ -60,9 +61,11 @@ namespace PlayerScripts
 
         void MinetaurAttack()
         {
-            if (mainScript.healthScript.ReceiveDamage(50))
+            if (mainScript.healthScript.ReceiveDamage(20))
             {
                 Debug.Log("PlayerDied");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
             }
         }
 
@@ -77,6 +80,7 @@ namespace PlayerScripts
             if (mainScript.stateScript.hasKey)
             {
                 Debug.Log("Door opened");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             }
             else
             {

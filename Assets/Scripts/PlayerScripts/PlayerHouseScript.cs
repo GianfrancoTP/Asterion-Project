@@ -18,7 +18,7 @@ namespace PlayerScripts
 
         private void Start()
         {
-            house = "ARES";
+            house = MainMenu.houseName;
             SetHouse();
         }
     }

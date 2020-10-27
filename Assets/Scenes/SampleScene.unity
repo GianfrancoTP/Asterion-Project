@@ -7780,8 +7780,8 @@ GameObject:
   - component: {fileID: 784983755}
   - component: {fileID: 784983754}
   - component: {fileID: 784983753}
-  - component: {fileID: 784983757}
   - component: {fileID: 784983756}
+  - component: {fileID: 784983757}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Ghost
@@ -7875,7 +7875,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -7891,27 +7891,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &784983757
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784983751}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!1 &858268686
 GameObject:
   m_ObjectHideFlags: 0
@@ -7936,7 +7915,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858268686}
-  m_LocalRotation: {x: -0, y: -0, z: -0.81675667, w: 0.57698226}
+  m_LocalRotation: {x: -0, y: -0, z: -0.66885066, w: 0.7433968}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7971,7 +7950,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.0072715
-  m_PointLightOuterRadius: 56.743458
+  m_PointLightOuterRadius: 10.912109
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -7998,7 +7977,7 @@ GameObject:
   - component: {fileID: 877346318}
   - component: {fileID: 877346317}
   - component: {fileID: 877346316}
-  - component: {fileID: 877346324}
+  - component: {fileID: 919345661}
   - component: {fileID: 877346321}
   - component: {fileID: 877346322}
   - component: {fileID: 877346323}
@@ -8040,7 +8019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  mainScript: {fileID: 0}
+  mainScript: {fileID: 877346318}
   levelText: {fileID: 1095353196}
 --- !u!114 &877346317
 MonoBehaviour:
@@ -8072,7 +8051,7 @@ MonoBehaviour:
   movementScript: {fileID: 877346317}
   stateScript: {fileID: 877346316}
   playerCollisionScript: {fileID: 877346320}
-  playerAttackScript: {fileID: 877346324}
+  playerAttackScript: {fileID: 919345661}
 --- !u!114 &877346319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8208,7 +8187,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -8220,7 +8199,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &877346323
 Rigidbody2D:
@@ -8230,21 +8209,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877346314}
-
   m_BodyType: 1
-
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!1 &919345659
 GameObject:
   m_ObjectHideFlags: 0
@@ -8254,7 +8231,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 919345660}
-  - component: {fileID: 919345661}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -9727,5 +9703,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 877346315}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

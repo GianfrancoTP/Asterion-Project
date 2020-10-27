@@ -7,11 +7,7 @@ namespace PlayerScripts
     public class PlayerCollisionScript : MonoBehaviour
     {
         [SerializeField] private PlayerMainScript mainScript;
-
-        private void Start()
-        {
-           Debug.Log("WGERTBVERHBRNBTRNer");
-        }
+        
         void OnCollisionEnter2D(Collision2D collisionInfo)
         {
             if (collisionInfo.collider.tag == "Ghost")

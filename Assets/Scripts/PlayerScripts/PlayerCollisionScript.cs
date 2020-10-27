@@ -18,11 +18,6 @@ namespace PlayerScripts
             {
                 Debug.Log("Ghost");
             }
-            
-            else if (collisionInfo.collider.tag == "door")
-            {
-                //FindObjectOfType<GameManager>().WinGame();
-            }
             else if (collisionInfo.collider.tag == "Minotaur")
             {
                 Debug.Log("Minotaur");
@@ -36,6 +31,15 @@ namespace PlayerScripts
             {
                 Debug.Log("Found Rune");
                 Destroy(other.gameObject);
+            }
+            else if (other.gameObject.tag == "Key")
+            {
+                getKey();
+                Destroy(other.gameObject);
+            }
+            else if (other.gameObject.tag == "Door")
+            {
+                openDoor();
             }
         }
 
@@ -63,6 +67,24 @@ namespace PlayerScripts
             if (mainScript.healthScript.ReceiveDamage(50))
             {
                 Debug.Log("PlayerDied");
+            }
+        }
+
+        void getKey()
+        {
+            mainScript.stateScript.hasKey = true;
+            Debug.Log("Found Key");
+        }
+
+        void openDoor()
+        {
+            if (mainScript.stateScript.hasKey)
+            {
+                Debug.Log("Door opened");
+            }
+            else
+            {
+                Debug.Log("Missing Key");
             }
         }
     }

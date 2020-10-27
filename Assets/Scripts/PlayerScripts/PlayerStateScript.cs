@@ -13,7 +13,7 @@ namespace PlayerScripts
         
         [SerializeField] private PlayerMainScript mainScript;
         public Text levelText;
-
+        
         public void AddExperience(float experienceGain)
         {
             experience += experienceGain;

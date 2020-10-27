@@ -12,7 +12,7 @@ namespace PlayerScripts
         [SerializeField] internal PlayerStateScript stateScript;
         [SerializeField] internal PlayerCollisionScript playerCollisionScript;
         [SerializeField] internal PlayerAttackScript playerAttackScript;
-
+        [SerializeField] internal PlayerHealthScript healthScript;
 
         private void Awake()
         {

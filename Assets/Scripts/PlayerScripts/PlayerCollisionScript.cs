@@ -12,7 +12,6 @@ namespace PlayerScripts
         {
            Debug.Log("WGERTBVERHBRNBTRNer");
         }
-
         void OnCollisionEnter2D(Collision2D collisionInfo)
         {
             if (collisionInfo.collider.tag == "Ghost")
@@ -23,6 +22,11 @@ namespace PlayerScripts
             else if (collisionInfo.collider.tag == "door")
             {
                 //FindObjectOfType<GameManager>().WinGame();
+            }
+            else if (collisionInfo.collider.tag == "Minotaur")
+            {
+                Debug.Log("Minotaur");
+                MinetaurAttack();
             }
         }
         
@@ -52,6 +56,14 @@ namespace PlayerScripts
         float Attack(GameObject Ghost)
         {
             return (float) 5.0;
+        }
+
+        void MinetaurAttack()
+        {
+            if (mainScript.healthScript.ReceiveDamage(50))
+            {
+                Debug.Log("PlayerDied");
+            }
         }
     }
 }

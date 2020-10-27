@@ -7,6 +7,8 @@ TagManager:
   - Rune
   - Ghost
   - Minotaur
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX

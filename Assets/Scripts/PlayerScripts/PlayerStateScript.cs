@@ -23,7 +23,7 @@ namespace PlayerScripts
                 level += 1;
                 Debug.Log("Level Up");
                 
-                levelText.text = level.ToString();
+                levelText.text = "Level " + level.ToString();
             }
         }
     }

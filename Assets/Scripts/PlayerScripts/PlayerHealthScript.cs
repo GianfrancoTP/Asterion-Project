@@ -6,6 +6,7 @@ namespace PlayerScripts
 {
     public class PlayerHealthScript : MonoBehaviour
     {
+        public static event Action takeDamage;
         [SerializeField] private PlayerMainScript mainScript;
         internal float life;
 
@@ -16,6 +17,7 @@ namespace PlayerScripts
 
         public bool ReceiveDamage(float damage)
         {
+            takeDamage?.Invoke();
             life -= damage;
             if (life <= 0)
             {

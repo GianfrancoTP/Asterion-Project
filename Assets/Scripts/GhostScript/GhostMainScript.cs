@@ -9,7 +9,6 @@ namespace GhostScript
 
         private void Awake()
         {
-           
             
         }
     }

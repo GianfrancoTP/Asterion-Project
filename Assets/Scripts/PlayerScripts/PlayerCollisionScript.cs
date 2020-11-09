@@ -14,6 +14,7 @@ namespace PlayerScripts
             if (collisionInfo.collider.tag == "Ghost")
             {
                 Debug.Log("Ghost");
+               
             }
             else if (collisionInfo.collider.tag == "Minotaur")
             {
@@ -38,6 +39,11 @@ namespace PlayerScripts
             {
                 openDoor();
             }
+            else if (other.gameObject.tag == "Ghost")
+            {
+                GhostAttack();
+                Debug.Log("Ghost Damage");
+            }
         }
 
         void FoundRune()
@@ -60,6 +66,16 @@ namespace PlayerScripts
         }
 
         void MinetaurAttack()
+        {
+            if (mainScript.healthScript.ReceiveDamage(20))
+            {
+                Debug.Log("PlayerDied");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+            }
+        }
+
+        void GhostAttack()
         {
             if (mainScript.healthScript.ReceiveDamage(20))
             {

@@ -14,6 +14,8 @@ namespace GhostScript
         private float _minPosition;
         internal float life;
 
+        public static event Action<string> GhostDeath;
+
         private void Start()
         {
             _startingPosition = transform.position;
@@ -53,6 +55,7 @@ namespace GhostScript
             if (life <= 0)
             {
                 Debug.Log("Ghost Dead");
+                GhostDeath?.Invoke("GHOST");
                 Destroy(gameObject);
                 return true;
             }

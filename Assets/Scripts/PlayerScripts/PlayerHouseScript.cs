@@ -9,6 +9,7 @@ namespace PlayerScripts
         internal string house;
         public Text houseNameText;
         [SerializeField] private PlayerMainScript mainScript;
+        internal int armor = 1;
 
         void SetHouse()
         {
@@ -18,8 +19,11 @@ namespace PlayerScripts
 
         private void Start()
         {
-            house = MainMenu.houseName;
+            //house = MainMenu.houseName;
+            house = "ARES";
             SetHouse();
         }
+
+     
     }
 }

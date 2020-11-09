@@ -14,6 +14,7 @@ namespace PlayerScripts
         [SerializeField] internal PlayerAttackScript playerAttackScript;
         [SerializeField] internal PlayerHealthScript healthScript;
         [SerializeField] internal PlayerHouseScript houseScript;
+        [SerializeField] internal PlayerPowerScript powerScript;
         private void Awake()
         {
 

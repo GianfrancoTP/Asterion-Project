@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GhostScript;
 
 namespace PlayerScripts
 {
@@ -14,10 +15,19 @@ namespace PlayerScripts
         [SerializeField] private PlayerMainScript mainScript;
         public Text levelText;
         internal bool hasKey=false;
+        
 
-        public void AddExperience(float experienceGain)
+        public void Start()
         {
-            experience += experienceGain;
+            GhostStateScript.GhostDeath += AddExperience;
+        }
+
+        public void AddExperience(string enemy)
+        {
+            if (enemy == "GHOST")
+            {
+                experience += 10;
+            }
             if (experience == 10)
             {
                 level += 1;

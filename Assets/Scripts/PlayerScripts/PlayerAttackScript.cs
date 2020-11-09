@@ -1,5 +1,6 @@
 ﻿using System;
 using GhostScript;
+using MinotaurScripts;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -41,7 +42,17 @@ namespace PlayerScripts
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(attackDamage);
+                    if (enemiesToDamage[i].gameObject.tag == "Ghost")
+                    {
+                        enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(attackDamage);
+
+                    }
+                    else if (enemiesToDamage[i].gameObject.tag == "Minotaur")
+                    {
+                        enemiesToDamage[i].GetComponent<MinotaurMainScript>().stateScript.TakeDamage(attackDamage);
+
+                    }
+                    
                 }
                 
         }

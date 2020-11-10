@@ -1,4 +1,5 @@
-﻿﻿using System;
+﻿using DefaultNamespace;
+using System;
 using System.Net.Mail;
  using UnityEditor;
  using UnityEngine;
@@ -54,8 +55,10 @@ namespace GhostScript
             GhostDamage?.Invoke();
             life -= damage;
             Debug.Log("ghost took damage");
+            AudioControllerScript.GhostDamaged();
             if (life <= 0)
             {
+                AudioControllerScript.GhostDeathSound();
                 Debug.Log("Ghost Dead");
                 GhostDeath?.Invoke("GHOST");
                 Destroy(gameObject);

@@ -4,6 +4,7 @@ using UnityEngine;
 using GhostScript;
 using DefaultNamespace;
 using MinotaurScripts;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace PlayerScripts
 {
@@ -15,6 +16,16 @@ namespace PlayerScripts
         public float rangePowerAres;
         public float damagePowerAres;
         public LayerMask whatIsEnemiesPowerAres;
+        
+        private float timeBtwPowerZeus;
+        public float startTimerBtwPowerZeus;
+        public Transform attackPosPowerZeus;
+        public Vector2 rangePowerZeus;
+        public float damagePowerZeus;
+        public LayerMask whatIsEnemiesPowerZeus;
+
+        public GameObject pointLight;
+        
         
         [SerializeField] private PlayerMainScript mainScript;
         internal bool isKilled;
@@ -50,6 +61,20 @@ namespace PlayerScripts
                     timeBtwPowerAres -= Time.deltaTime;
                 }
             }
+
+            else if (mainScript.houseScript.house == "ZEUS")
+            {
+                if (timeBtwPowerZeus <= 0)
+                {
+                    ZeusPower();
+                    mainScript.inputScript.powerAttack = false;
+                    timeBtwPowerZeus = startTimerBtwPowerZeus;
+                }
+                else
+                {
+                    timeBtwPowerZeus -= Time.deltaTime;
+                }
+            }
             else if (mainScript.houseScript.house == "HERMES")
             {
                 AudioControllerScript.SpecialSound();
@@ -65,7 +90,7 @@ namespace PlayerScripts
             {
                 mainScript.inputScript.utilityAttack = false;
                 mainScript.houseScript.armor += 5;
-                Invoke("HermesUtility", 2.0f);
+                Invoke("AresUtility", 2.0f);
                 Debug.Log("AresUtility");
 
             }
@@ -76,6 +101,48 @@ namespace PlayerScripts
                 Invoke("HermesUtility", 2.0f);        
                 Debug.Log("HermUtility");
             }
+            else if (mainScript.houseScript.house == "ZEUS")
+            {
+                mainScript.inputScript.utilityAttack = false;
+                ZeusUtilitty();
+                Invoke("ZeusUtilityReturn", 2.0f);        
+                Debug.Log("ZeusUT");
+            }
+        }
+
+        void ZeusPower()
+        {
+            Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPosPowerZeus.position, rangePowerZeus, whatIsEnemiesPowerZeus);
+            for (int i = 0; i < enemiesToDamage.Length; i++)
+            {
+                if (enemiesToDamage[i].gameObject.tag == "Ghost")
+                {
+                    enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(damagePowerZeus);
+                        
+
+                }
+                else if (enemiesToDamage[i].gameObject.tag == "Minotaur")
+                {
+                    enemiesToDamage[i].GetComponent<MinotaurMainScript>().stateScript.TakeDamage(damagePowerZeus);
+
+                }
+               
+            }
+            
+        }
+
+        void ZeusUtilitty()
+        {
+            pointLight.GetComponent<Light2D>().pointLightOuterRadius += 5;
+            pointLight.GetComponent<Light2D>().pointLightInnerRadius += 5;
+
+            
+        }
+
+        void ZeusUtilityReturn()
+        {
+            pointLight.GetComponent<Light2D>().pointLightOuterRadius -= 5;
+            pointLight.GetComponent<Light2D>().pointLightInnerRadius -= 5;
         }
 
         void HermesPower()
@@ -117,6 +184,9 @@ namespace PlayerScripts
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(attackPosPowerAres.position,rangePowerAres);
+            
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireCube(attackPosPowerZeus.position, rangePowerZeus);
         }
     }
 }

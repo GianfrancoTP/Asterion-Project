@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace;
 using GhostScript;
 using MinotaurScripts;
 using UnityEngine;
@@ -25,10 +26,11 @@ namespace PlayerScripts
             {
                 if (mainScript.inputScript.basicAttack)
                 {
+                    AudioControllerScript.PlayerAttackSound();
                     basicAttack();
                     mainScript.inputScript.basicAttack = false;
                 }
-
+                
                 timeBtwAttack = startTimerBtwAttack;
             }
             else

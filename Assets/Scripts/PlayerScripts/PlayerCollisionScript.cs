@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DefaultNamespace;
 
 namespace PlayerScripts
 {
@@ -27,20 +28,24 @@ namespace PlayerScripts
         {
             if (other.gameObject.tag == "Rune")
             {
+                AudioControllerScript.TakeObjectSound();
                 Debug.Log("Found Rune");
                 Destroy(other.gameObject);
             }
             else if (other.gameObject.tag == "Key")
             {
+                AudioControllerScript.TakeObjectSound();
                 getKey();
                 Destroy(other.gameObject);
             }
             else if (other.gameObject.tag == "Door")
             {
+                AudioControllerScript.EnterDoorSound();
                 openDoor();
             }
             else if (other.gameObject.tag == "Ghost")
             {
+                AudioControllerScript.PlayerDamageSound();
                 GhostAttack();
                 Debug.Log("Ghost Damage");
             }

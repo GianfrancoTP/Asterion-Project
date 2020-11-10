@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DefaultNamespace;
+using System;
 using System.Net.Mail;
 using UnityEditor;
 using UnityEngine;
@@ -25,8 +26,10 @@ namespace MinotaurScripts
         {
             life -= damage;
             Debug.Log("Minotaur took damage");
+            AudioControllerScript.MinotaurDamaged();
             if (life <= 0)
             {
+                AudioControllerScript.MinautorStunSound();
                 Debug.Log("MinotaurStuned");
                 MinotaurStun?.Invoke();
                 stuned = true;

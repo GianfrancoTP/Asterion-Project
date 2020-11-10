@@ -15,6 +15,7 @@ namespace GhostScript
         internal float life;
 
         public static event Action<string> GhostDeath;
+        public static event Action GhostDamage;
 
         private void Start()
         {
@@ -50,6 +51,7 @@ namespace GhostScript
 
         public bool TakeDamage(float damage)
         {
+            GhostDamage?.Invoke();
             life -= damage;
             Debug.Log("ghost took damage");
             if (life <= 0)

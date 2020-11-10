@@ -18,7 +18,8 @@ namespace PlayerScripts
 
         [SerializeField] private PlayerMainScript mainScript;
         internal bool isKilled;
-        
+
+        public static event Action PlayerAttack;
         
         void Update()
         {
@@ -26,7 +27,8 @@ namespace PlayerScripts
             {
                 if (mainScript.inputScript.basicAttack)
                 {
-                    AudioControllerScript.PlayerAttackSound();
+                    PlayerAttack?.Invoke();
+                    //AudioControllerScript.PlayerAttackSound();
                     basicAttack();
                     mainScript.inputScript.basicAttack = false;
                 }

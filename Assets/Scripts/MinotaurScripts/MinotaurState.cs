@@ -15,6 +15,7 @@ namespace MinotaurScripts
         internal bool stuned = false;
 
         public static event Action MinotaurStun;
+        public static event Action MinotaurDamage;
 
         private void Start()
         {
@@ -25,11 +26,12 @@ namespace MinotaurScripts
         {
             life -= damage;
             Debug.Log("Minotaur took damage");
-            AudioControllerScript.MinotaurDamaged();
+            MinotaurDamage?.Invoke();
+            //AudioControllerScript.MinotaurDamaged();
             if (life <= 0)
             {
                 GetComponent<Collider2D>().enabled = false;
-                AudioControllerScript.MinautorStunSound();
+                //AudioControllerScript.MinautorStunSound();
                 Debug.Log("MinotaurStuned");
                 MinotaurStun?.Invoke();
                 stuned = true;

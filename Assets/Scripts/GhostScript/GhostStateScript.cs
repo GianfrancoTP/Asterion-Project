@@ -55,10 +55,10 @@ namespace GhostScript
             GhostDamage?.Invoke();
             life -= damage;
             Debug.Log("ghost took damage");
-            AudioControllerScript.GhostDamaged();
+            //AudioControllerScript.GhostDamaged();
             if (life <= 0)
             {
-                AudioControllerScript.GhostDeathSound();
+                //AudioControllerScript.GhostDeathSound();
                 Debug.Log("Ghost Dead");
                 GhostDeath?.Invoke("GHOST");
                 Destroy(gameObject);

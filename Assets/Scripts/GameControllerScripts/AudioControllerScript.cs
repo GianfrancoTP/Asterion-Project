@@ -1,6 +1,8 @@
 ﻿using System;
+using GhostScript;
 using MinotaurScripts;
 using PlayerScripts;
+using UnityEditor;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -24,7 +26,17 @@ namespace DefaultNamespace
             minotaurStun = Resources.Load<AudioClip>("StunSound");
             playerAttack = Resources.Load<AudioClip>("SlashSound");
             PlayerHealthScript.takeDamage += PlayerDamageSound;
-            MinotaurState.MinotaurStun += MinautorStunSound;
+            MinotaurState.MinotaurStun += MinotaurStunSound;
+            MinotaurState.MinotaurDamage += MinotaurDamaged;
+            PlayerAttackScript.PlayerAttack += PlayerAttackSound;
+            PlayerCollisionScript.TakeObject += TakeObjectSound;
+            PlayerCollisionScript.EnterDoor += EnterDoorSound;
+            PlayerStateScript.LevelUp += LevelUpSound;
+            PlayerPowerScript.AresSpecial += AresSpecial;
+            PlayerPowerScript.HermesSpecial += HermesSpecial;
+            GhostStateScript.GhostDamage += GhostDamaged;
+            GhostStateScript.GhostDeath += GhostDeathSound;
+            PlayerPowerScript.AresUtil += MinotaurStunSound;
 
             audioSrc = GetComponent<AudioSource>();
         }
@@ -44,7 +56,7 @@ namespace DefaultNamespace
             audioSrc.PlayOneShot(levelUp);
         }
 
-        public static void SpecialSound() 
+        public static void HermesSpecial() 
         {
             audioSrc.PlayOneShot(specialSound);
         }
@@ -54,12 +66,12 @@ namespace DefaultNamespace
             audioSrc.PlayOneShot(aresHit);
         }
 
-        public static void GhostDeathSound()
+        public static void GhostDeathSound(string ghost)
         {
             audioSrc.PlayOneShot(ghostDeathSound);
         }
 
-        public static void MinautorStunSound()
+        public static void MinotaurStunSound()
         {
             audioSrc.PlayOneShot(minotaurStun);
         }

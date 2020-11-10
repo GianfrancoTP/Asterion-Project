@@ -17,6 +17,9 @@ namespace PlayerScripts
         public LayerMask whatIsEnemiesPowerAres;
         
         [SerializeField] private PlayerMainScript mainScript;
+        public static event Action AresSpecial;
+        public static event Action HermesSpecial;
+        public static event Action AresUtil;
         internal bool isKilled;
 
         private void FixedUpdate()
@@ -41,6 +44,7 @@ namespace PlayerScripts
             {
                 if (timeBtwPowerAres <= 0)
                 {
+                    AresSpecial?.Invoke();
                     AresPower();
                     mainScript.inputScript.powerAttack = false;
                     timeBtwPowerAres = startTimerBtwPowerAres;
@@ -52,7 +56,8 @@ namespace PlayerScripts
             }
             else if (mainScript.houseScript.house == "HERMES")
             {
-                AudioControllerScript.SpecialSound();
+                HermesSpecial?.Invoke();
+                //AudioControllerScript.SpecialSound();
                 mainScript.inputScript.powerAttack = false;
                 mainScript.movementScript.movementSpeed +=5;
                 Invoke("HermesPower", 2.0f);                
@@ -63,6 +68,7 @@ namespace PlayerScripts
         {
             if (mainScript.houseScript.house == "ARES")
             {
+                AresUtil?.Invoke();
                 mainScript.inputScript.utilityAttack = false;
                 mainScript.houseScript.armor += 5;
                 Invoke("HermesUtility", 2.0f);
@@ -71,6 +77,7 @@ namespace PlayerScripts
             }
             else if (mainScript.houseScript.house == "HERMES")
             {
+                HermesSpecial?.Invoke();
                 mainScript.inputScript.utilityAttack = false;
                 mainScript.playerAttackScript.startTimerBtwAttack = (float) 0.1;
                 Invoke("HermesUtility", 2.0f);        

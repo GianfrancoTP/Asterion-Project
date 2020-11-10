@@ -25,6 +25,7 @@ namespace DefaultNamespace
             winSound = Resources.Load<AudioClip>("WinSound");
             minotaurStun = Resources.Load<AudioClip>("StunSound");
             playerAttack = Resources.Load<AudioClip>("SlashSound");
+            
             PlayerHealthScript.takeDamage += PlayerDamageSound;
             MinotaurState.MinotaurStun += MinotaurStunSound;
             MinotaurState.MinotaurDamage += MinotaurDamaged;

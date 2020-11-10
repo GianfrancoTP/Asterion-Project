@@ -13339,6 +13339,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &806810385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806810386}
+  m_Layer: 0
+  m_Name: ZeusPowerPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &806810386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806810385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.51, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 877346315}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828227274
 GameObject:
   m_ObjectHideFlags: 0
@@ -13443,8 +13473,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858268686}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7438033, w: 0.66839856}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6043331, w: 0.79673177}
+  m_LocalPosition: {x: -0.03, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 877346315}
@@ -13477,8 +13507,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.0072715
-  m_PointLightOuterRadius: 69.65223
+  m_PointLightInnerRadius: 1.6363807
+  m_PointLightOuterRadius: 2.7742035
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -13535,6 +13565,7 @@ Transform:
   - {fileID: 858268687}
   - {fileID: 2123934719}
   - {fileID: 1686182373}
+  - {fileID: 806810386}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13803,6 +13834,14 @@ MonoBehaviour:
   whatIsEnemiesPowerAres:
     serializedVersion: 2
     m_Bits: 256
+  startTimerBtwPowerZeus: 0
+  attackPosPowerZeus: {fileID: 806810386}
+  rangePowerZeus: {x: 5.19, y: 1.63}
+  damagePowerZeus: 100
+  whatIsEnemiesPowerZeus:
+    serializedVersion: 2
+    m_Bits: 768
+  pointLight: {fileID: 858268686}
   mainScript: {fileID: 877346318}
 --- !u!1 &919345659
 GameObject:
@@ -13856,11 +13895,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTimerBtwAttack: 0.5
   attackPos: {fileID: 2123934719}
-  attackRange: 0.64
+  attackRange: 0.65
   attackDamage: 10
   whatIsEnemies:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   mainScript: {fileID: 877346318}
 --- !u!1 &1064772717
 GameObject:

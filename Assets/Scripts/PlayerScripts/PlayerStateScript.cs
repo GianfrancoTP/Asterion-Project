@@ -15,6 +15,7 @@ namespace PlayerScripts
         internal List<string> runes;
         
         [SerializeField] private PlayerMainScript mainScript;
+        public static event Action LevelUp;
         public Text levelText;
         internal bool hasKey=false;
         
@@ -34,7 +35,8 @@ namespace PlayerScripts
             if (experience == experience_to_level)
             {
                 experience_to_level = experience_to_level * 1.5;
-                AudioControllerScript.LevelUpSound();
+                LevelUp.Invoke();
+                //AudioControllerScript.LevelUpSound();
                 level += 1;
                 Debug.Log("Level Up");
                 

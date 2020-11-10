@@ -8,14 +8,17 @@ namespace PlayerScripts
 {
     public class PlayerCollisionScript : MonoBehaviour
     {
+        public static event Action TakeObject;
+        public static event Action EnterDoor;
         [SerializeField] private PlayerMainScript mainScript;
-        
+
+
         void OnCollisionEnter2D(Collision2D collisionInfo)
         {
             if (collisionInfo.collider.tag == "Ghost")
             {
                 Debug.Log("Ghost");
-                AudioControllerScript.PlayerDamageSound();
+                //AudioControllerScript.PlayerDamageSound();
                 GhostAttack();
                 Debug.Log("Ghost Damage");
                
@@ -37,24 +40,27 @@ namespace PlayerScripts
         {
             if (other.gameObject.tag == "Rune")
             {
-                AudioControllerScript.TakeObjectSound();
+                TakeObject?.Invoke();
+                //AudioControllerScript.TakeObjectSound();
                 Debug.Log("Found Rune");
                 Destroy(other.gameObject);
             }
             else if (other.gameObject.tag == "Key")
             {
-                AudioControllerScript.TakeObjectSound();
+                TakeObject?.Invoke();
+                //AudioControllerScript.TakeObjectSound();
                 getKey();
                 Destroy(other.gameObject);
             }
             else if (other.gameObject.tag == "Door")
             {
-                AudioControllerScript.EnterDoorSound();
+                EnterDoor?.Invoke();
+                //AudioControllerScript.EnterDoorSound();
                 openDoor();
             }
             else if (other.gameObject.tag == "Ghost")
             {
-                AudioControllerScript.PlayerDamageSound();
+                //AudioControllerScript.PlayerDamageSound();
                 GhostAttack();
                
                 Debug.Log("Ghost Damage E");

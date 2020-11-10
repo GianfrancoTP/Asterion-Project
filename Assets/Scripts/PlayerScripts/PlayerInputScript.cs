@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DefaultNamespace;
+using System;
 using UnityEngine;
 
 namespace PlayerScripts

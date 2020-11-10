@@ -2,6 +2,8 @@
 using System.Net.Mail;
 using UnityEngine;
 using GhostScript;
+using DefaultNamespace;
+
 namespace PlayerScripts
 {
     public class PlayerPowerScript : MonoBehaviour
@@ -49,6 +51,7 @@ namespace PlayerScripts
             }
             else if (mainScript.houseScript.house == "HERMES")
             {
+                AudioControllerScript.SpecialSound();
                 mainScript.inputScript.powerAttack = false;
                 mainScript.movementScript.movementSpeed +=5;
                 Invoke("HermesPower", 2.0f);                

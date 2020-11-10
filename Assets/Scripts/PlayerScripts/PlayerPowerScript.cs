@@ -31,6 +31,9 @@ namespace PlayerScripts
         public static event Action AresSpecial;
         public static event Action HermesSpecial;
         public static event Action AresUtil;
+        public static event Action ZeusUtil;
+        public static event Action ZeusSpecial;
+
         internal bool isKilled;
 
         private void FixedUpdate()
@@ -70,6 +73,7 @@ namespace PlayerScripts
             {
                 if (timeBtwPowerZeus <= 0)
                 {
+                    ZeusSpecial?.Invoke();
                     ZeusPower();
                     mainScript.inputScript.powerAttack = false;
                     timeBtwPowerZeus = startTimerBtwPowerZeus;
@@ -110,6 +114,7 @@ namespace PlayerScripts
             }
             else if (mainScript.houseScript.house == "ZEUS")
             {
+                ZeusUtil?.Invoke();
                 mainScript.inputScript.utilityAttack = false;
                 ZeusUtilitty();
                 Invoke("ZeusUtilityReturn", 2.0f);        

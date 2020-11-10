@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GhostScript;
+using DefaultNamespace;
 
 namespace PlayerScripts
 {
@@ -30,6 +31,7 @@ namespace PlayerScripts
             }
             if (experience == 10)
             {
+                AudioControllerScript.LevelUpSound();
                 level += 1;
                 Debug.Log("Level Up");
                 

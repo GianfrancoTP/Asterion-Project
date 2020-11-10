@@ -7,11 +7,14 @@ namespace DefaultNamespace
 {
     public class AudioControllerScript : MonoBehaviour
     {
-        public static AudioClip minotaurStun, playerAttack, winSound, objectSound, damageSound, ghostDeathSound, ghostDamaged, minotaurDamaged;
+        public static AudioClip minotaurStun, playerAttack, winSound, objectSound, damageSound, ghostDeathSound, ghostDamaged, minotaurDamaged, levelUp, specialSound, aresHit;
         static AudioSource audioSrc;
 
         void Start()
         {
+            specialSound = Resources.Load<AudioClip>("SpecialAttack");
+            aresHit = Resources.Load<AudioClip>("AresSpecial");
+            levelUp = Resources.Load<AudioClip>("LevelUpSound");
             ghostDamaged = Resources.Load<AudioClip>("GhostDamage");
             minotaurDamaged = Resources.Load<AudioClip>("MinotaurDamage");
             ghostDeathSound = Resources.Load<AudioClip>("GhostDeath");
@@ -34,6 +37,21 @@ namespace DefaultNamespace
         public static void PlayerAttackSound()
         {
             audioSrc.PlayOneShot(playerAttack);
+        }
+
+        public static void LevelUpSound() 
+        {
+            audioSrc.PlayOneShot(levelUp);
+        }
+
+        public static void SpecialSound() 
+        {
+            audioSrc.PlayOneShot(specialSound);
+        }
+
+        public static void AresSpecial()
+        {
+            audioSrc.PlayOneShot(aresHit);
         }
 
         public static void GhostDeathSound()
@@ -65,5 +83,6 @@ namespace DefaultNamespace
         {
             audioSrc.PlayOneShot(minotaurDamaged);
         }
+
     }
 }

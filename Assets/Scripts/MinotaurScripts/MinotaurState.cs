@@ -1,6 +1,7 @@
 ﻿using DefaultNamespace;
 using System;
 using System.Net.Mail;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine;
@@ -17,9 +18,7 @@ namespace MinotaurScripts
 
         private void Start()
         {
-            
             life = 15;
-
         }
 
         public void TakeDamage(float damage)
@@ -29,6 +28,7 @@ namespace MinotaurScripts
             AudioControllerScript.MinotaurDamaged();
             if (life <= 0)
             {
+                GetComponent<Collider2D>().enabled = false;
                 AudioControllerScript.MinautorStunSound();
                 Debug.Log("MinotaurStuned");
                 MinotaurStun?.Invoke();
@@ -39,6 +39,7 @@ namespace MinotaurScripts
 
         void WakeUp()
         {
+            GetComponent<Collider2D>().enabled = true;
             stuned = false;
         }
         

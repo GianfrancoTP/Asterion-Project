@@ -9,7 +9,7 @@ namespace DefaultNamespace
 {
     public class AudioControllerScript : MonoBehaviour
     {
-        public static AudioClip minotaurStun, playerAttack, winSound, objectSound, damageSound, ghostDeathSound, ghostDamaged, minotaurDamaged, levelUp, specialSound, aresHit;
+        public static AudioClip minotaurStun, playerAttack, winSound, objectSound, damageSound, ghostDeathSound, ghostDamaged, minotaurDamaged, levelUp, specialSound, aresHit, zeusUility, zeusSpecial;
         static AudioSource audioSrc;
 
         void Start()
@@ -25,7 +25,9 @@ namespace DefaultNamespace
             winSound = Resources.Load<AudioClip>("WinSound");
             minotaurStun = Resources.Load<AudioClip>("StunSound");
             playerAttack = Resources.Load<AudioClip>("SlashSound");
-            
+            zeusUility = Resources.Load<AudioClip>("ZeusUtility");
+            zeusSpecial = Resources.Load<AudioClip>("ZeusSpecial");
+
             PlayerHealthScript.takeDamage += PlayerDamageSound;
             MinotaurState.MinotaurStun += MinotaurStunSound;
             MinotaurState.MinotaurDamage += MinotaurDamaged;
@@ -38,6 +40,9 @@ namespace DefaultNamespace
             GhostStateScript.GhostDamage += GhostDamaged;
             GhostStateScript.GhostDeath += GhostDeathSound;
             PlayerPowerScript.AresUtil += MinotaurStunSound;
+            PlayerPowerScript.ZeusUtil += ZeusUtility;
+            PlayerPowerScript.ZeusSpecial += ZeusSpecial;
+
 
             audioSrc = GetComponent<AudioSource>();
         }
@@ -95,6 +100,16 @@ namespace DefaultNamespace
         public static void MinotaurDamaged()
         {
             audioSrc.PlayOneShot(minotaurDamaged);
+        }
+
+        public static void ZeusUtility()
+        {
+            audioSrc.PlayOneShot(zeusUility);
+        }
+
+        public static void ZeusSpecial()
+        {
+            audioSrc.PlayOneShot(zeusSpecial);
         }
 
     }

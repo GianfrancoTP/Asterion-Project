@@ -15,12 +15,21 @@ namespace PlayerScripts
             if (collisionInfo.collider.tag == "Ghost")
             {
                 Debug.Log("Ghost");
+                AudioControllerScript.PlayerDamageSound();
+                GhostAttack();
+                Debug.Log("Ghost Damage");
                
             }
             else if (collisionInfo.collider.tag == "Minotaur")
             {
                 Debug.Log("Minotaur");
                 MinetaurAttack();
+                var magnitude = 10000;
+ 
+                var force = transform.position - collisionInfo.transform.position;
+ 
+                force.Normalize ();
+                GetComponent<Rigidbody2D> ().AddForce (force * magnitude);
             }
         }
         
@@ -47,7 +56,14 @@ namespace PlayerScripts
             {
                 AudioControllerScript.PlayerDamageSound();
                 GhostAttack();
-                Debug.Log("Ghost Damage");
+               
+                Debug.Log("Ghost Damage E");
+                var magnitude = 10000;
+ 
+                var force = transform.position - other.transform.position;
+ 
+                force.Normalize ();
+                GetComponent<Rigidbody2D> ().AddForce (force * magnitude);
             }
         }
 

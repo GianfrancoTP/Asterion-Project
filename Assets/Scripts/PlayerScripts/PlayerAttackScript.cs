@@ -47,6 +47,7 @@ namespace PlayerScripts
                     if (enemiesToDamage[i].gameObject.tag == "Ghost")
                     {
                         enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(attackDamage);
+                        
 
                     }
                     else if (enemiesToDamage[i].gameObject.tag == "Minotaur")

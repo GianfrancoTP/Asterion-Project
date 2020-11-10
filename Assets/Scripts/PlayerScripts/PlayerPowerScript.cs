@@ -3,6 +3,7 @@ using System.Net.Mail;
 using UnityEngine;
 using GhostScript;
 using DefaultNamespace;
+using MinotaurScripts;
 
 namespace PlayerScripts
 {
@@ -91,7 +92,17 @@ namespace PlayerScripts
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosPowerAres.position, rangePowerAres, whatIsEnemiesPowerAres);
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(damagePowerAres);
+                if (enemiesToDamage[i].gameObject.tag == "Ghost")
+                {
+                    enemiesToDamage[i].GetComponent<GhostMainScript>().stateScript.TakeDamage(damagePowerAres);
+                        
+
+                }
+                else if (enemiesToDamage[i].gameObject.tag == "Minotaur")
+                {
+                    enemiesToDamage[i].GetComponent<MinotaurMainScript>().stateScript.TakeDamage(damagePowerAres);
+
+                }
                
             }
         }

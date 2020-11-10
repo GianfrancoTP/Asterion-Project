@@ -10,6 +10,7 @@ namespace PlayerScripts
     public class PlayerStateScript : MonoBehaviour
     {
         internal float experience=0;
+        internal double experience_to_level = 10;
         public int level=1;
         internal List<string> runes;
         
@@ -28,9 +29,11 @@ namespace PlayerScripts
             if (enemy == "GHOST")
             {
                 experience += 10;
+                Debug.Log("Your experience is " + experience.ToString() + " out of " + experience_to_level.ToString());
             }
-            if (experience == 10)
+            if (experience == experience_to_level)
             {
+                experience_to_level = experience_to_level * 1.5;
                 AudioControllerScript.LevelUpSound();
                 level += 1;
                 Debug.Log("Level Up");

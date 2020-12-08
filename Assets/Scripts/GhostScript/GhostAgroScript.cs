@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿﻿using UnityEngine;
 
-namespace MinotaurScripts
+namespace GhostScript
 {
-    public class MinotaurAgro : MonoBehaviour
+    public class GhostAgroScript : MonoBehaviour
     {
         [SerializeField] Transform player;
 
@@ -16,9 +12,9 @@ namespace MinotaurScripts
 
         Rigidbody2D rb2d;
         
-        [SerializeField] private MinotaurMainScript mainScript;
+        [SerializeField] private GhostMainScript mainScript;
         public float distanceToPlayer;
-        public bool isMinotaurClose;
+        public bool isGhostClose;
 
 
         // Start is called before the first frame update
@@ -31,28 +27,22 @@ namespace MinotaurScripts
         // Update is called once per frame
         void Update()
         {
-            if (mainScript.stateScript.stuned)
+            //distance to player
+            distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+            if (distanceToPlayer < aggroRange)
             {
-                stopChasingPlayer();
+                //code to chase player
+                isGhostClose = true;
+                this.gameObject.GetComponent<GhostStateScript>().Recalibrate();
             }
             else
             {
-
-
-                //distance to player
-                distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-                if (distanceToPlayer < aggroRange)
-                {
-                    //code to chase player
-                    isMinotaurClose = true;
-                }
-                else
-                {
-                    isMinotaurClose = false;
-                    //stop chasing player
-                }
+                
+                isGhostClose = false;
+                //stop chasing player
             }
+            
 
         }
 

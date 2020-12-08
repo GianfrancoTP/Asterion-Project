@@ -10,10 +10,10 @@ namespace GhostScript
 
         private void FixedUpdate()
         {
-            Patrol();
+            //Patrol();
         }
         
-        void Patrol()
+        public void Patrol()
         {
             if (mainScript.stateScript._goingUp)
             {

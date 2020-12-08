@@ -17,6 +17,8 @@ namespace MinotaurScripts
         Rigidbody2D rb2d;
         
         [SerializeField] private MinotaurMainScript mainScript;
+        public float distanceToPlayer;
+        public bool isMinotaurClose;
 
 
         // Start is called before the first frame update
@@ -38,23 +40,23 @@ namespace MinotaurScripts
 
 
                 //distance to player
-                float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+                distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
                 if (distanceToPlayer < aggroRange)
                 {
                     //code to chase player
-                    chasePlayer();
+                    isMinotaurClose = true;
                 }
                 else
                 {
+                    isMinotaurClose = false;
                     //stop chasing player
-                    stopChasingPlayer();
                 }
             }
 
         }
 
-        private void chasePlayer()
+        public void chasePlayer()
         {
             if (transform.position.x < player.position.x && transform.position.y < player.position.y)
             {
@@ -80,7 +82,7 @@ namespace MinotaurScripts
             }
         }
 
-        private void stopChasingPlayer()
+        public void stopChasingPlayer()
         {
             rb2d.velocity = new Vector2(0, 0);
         }

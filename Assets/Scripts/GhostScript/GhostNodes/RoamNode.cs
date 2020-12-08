@@ -15,9 +15,7 @@ namespace DefaultNamespace
         {
             
             ghost.GetComponent<GhostMovementScript>().Patrol();
-            
-            Debug.Log("roaming");
-            
+
             return NodeState.RUNNING;
         }
     }

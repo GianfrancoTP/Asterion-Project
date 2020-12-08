@@ -12,7 +12,7 @@ namespace MinotaurScripts
     {
         
         internal float life;
-        internal bool stuned = false;
+        public bool stuned = false;
 
         public static event Action MinotaurStun;
         public static event Action MinotaurDamage;

@@ -13,8 +13,9 @@ namespace MinotaurScripts
             IsNearNode isPlayerNearNode = new IsNearNode();
             IdleNode idleNode = new IdleNode();
             ChaseNode chaseNode = new ChaseNode();
+            StunnedNode stunnedNode = new StunnedNode();
 
-            Sequence ChaseSequece = new Sequence(new List<Node> {isPlayerNearNode, chaseNode});
+            Sequence ChaseSequece = new Sequence(new List<Node> {isPlayerNearNode, new Inverter(stunnedNode), chaseNode});
             Sequence IdleSequence = new Sequence(new List<Node> {new Inverter(isPlayerNearNode), idleNode});
             
             topNode = new Selector(new List<Node>(){IdleSequence,ChaseSequece});

@@ -12982,6 +12982,8 @@ GameObject:
   - component: {fileID: 784983753}
   - component: {fileID: 784983756}
   - component: {fileID: 784983757}
+  - component: {fileID: 784983759}
+  - component: {fileID: 784983758}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Ghost
@@ -13064,7 +13066,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!61 &784983757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13075,7 +13077,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.011359394, y: -0.017039299}
@@ -13091,6 +13093,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65921986, y: 1.0340786}
   m_EdgeRadius: 0
+--- !u!114 &784983758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784983751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5146ca50b0e4fb89ad0e672d8ddc62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 877346315}
+  aggroRange: 2
+  moveSpeed: 2
+  mainScript: {fileID: 784983755}
+  distanceToPlayer: 0
+  isGhostClose: 0
+--- !u!114 &784983759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784983751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3754933072c54342bab9366364c7bb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786270577
 GameObject:
   m_ObjectHideFlags: 0
@@ -13355,7 +13387,7 @@ GameObject:
   - component: {fileID: 1086648262}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26272,6 +26304,7 @@ GameObject:
   - component: {fileID: 2084922580}
   - component: {fileID: 2084922585}
   - component: {fileID: 2084922584}
+  - component: {fileID: 2084922586}
   m_Layer: 8
   m_Name: Minotaur
   m_TagString: Minotaur
@@ -26295,6 +26328,8 @@ MonoBehaviour:
   aggroRange: 8
   moveSpeed: 2
   mainScript: {fileID: 2084922585}
+  distanceToPlayer: 0
+  isMinotaurClose: 0
 --- !u!50 &2084922581
 Rigidbody2D:
   serializedVersion: 4
@@ -26383,6 +26418,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agroScript: {fileID: 2084922580}
   stateScript: {fileID: 2084922584}
+--- !u!114 &2084922586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084922579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb520e135c884a8b846846e230e2d5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5672447331062243958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26400,6 +26447,11 @@ PrefabInstance:
       propertyPath: houseNameText
       value: 
       objectReference: {fileID: 828227276}
+    - target: {fileID: 5418779739137496157, guid: dd4766418299d3d4f8ae1e9ee1209bf1,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 57.247307
+      objectReference: {fileID: 0}
     - target: {fileID: 5672447330731220093, guid: dd4766418299d3d4f8ae1e9ee1209bf1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26459,6 +26511,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911613599608253241, guid: dd4766418299d3d4f8ae1e9ee1209bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.85254014
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911613599608253241, guid: dd4766418299d3d4f8ae1e9ee1209bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5226618
       objectReference: {fileID: 0}
     - target: {fileID: 8164596588112806074, guid: dd4766418299d3d4f8ae1e9ee1209bf1,
         type: 3}

@@ -9,6 +9,7 @@ TagManager:
   - Minotaur
   - Key
   - Door
+  - Wall
   layers:
   - Default
   - TransparentFX
